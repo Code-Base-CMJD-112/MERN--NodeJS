@@ -11,7 +11,7 @@ async function saveAirport(airport){
 }
 
 
-async function updateAirport(airportId, aiport){
+async function updateAirport(airportId, airport){
    return Airport.findOneAndUpdate({airportId: airportId},airport,{new: true})
 }
 

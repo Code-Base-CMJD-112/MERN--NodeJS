@@ -15,7 +15,7 @@ router.get(airportUrl, async (req,res)=>{
             country: airport.country
         }));
 
-        console.log(filterData);
+        console.log(filterAirportData);
         res.status(200).json(filterAirportData);
     }catch(err){
         console.error(err)
@@ -38,12 +38,32 @@ router.post(airportUrl, async (req,res)=>{
     }
 })
 
-router.patch(airportUrl, async (req,res)=>{
-    //Logic 
+router.patch(`${airportUrl}/:id`, async (req,res)=>{
+    try{
+
+     const id = req.params.id
+     const body = req.body
+
+     await airportService.updateAirport(id, body)
+     res.status(204).send("Airport Data Updated")
+
+
+    }catch(err){
+        console.error(err)
+        res.status(500).send("Server error")
+    }
 })
 
-router.delete(airportUrl, async (req,res)=>{
-    //Logic 
+router.delete(`${airportUrl}/:id`, async (req,res)=>{
+    try{
+        const id = req.params.id
+        await airportService.deleteAirport(id)   
+        res.status(204).send("Airport Data Deleted")
+    }catch(err){
+        console.error(err)
+        res.status(500).send("Server error")
+    }
+   
 })
 
 module.exports = router
