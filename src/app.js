@@ -3,10 +3,12 @@ require("dotenv").config()
 const app = express()
 const PORT = process.env.PORT || 3500
 const airportRoutes = require("./routes/airportRoutes")
+const authRoutes = require("./routes/authRoutes")
 const mongoose = require("mongoose")
 
 app.use(express.json())
 app.use("/airticket/api/v1",airportRoutes)
+app.use("/airticket/api/v1",authRoutes)
 
 app.get("/",(req,res)=>{
    res.send("Hello CMJD-112")
