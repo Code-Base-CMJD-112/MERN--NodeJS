@@ -27,7 +27,7 @@ router.post(`${authUrl}/signup`, async(req,res)=>{
 })
 
 //sign in
-router.post(`${authUrl}/signin`,async (req,res)=>{
+router.post(`${authUrl}/login`,async (req,res)=>{
    const { email, password } = req.body;
 
    //find the user exist

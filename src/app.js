@@ -5,8 +5,16 @@ const PORT = process.env.PORT || 3500
 const airportRoutes = require("./routes/airportRoutes")
 const authRoutes = require("./routes/authRoutes")
 const mongoose = require("mongoose")
+const cors = require("cors")
 
 app.use(express.json())
+app.use(cors({
+    origin:["http://localhost:3000"],
+    methods: ['GET','POST','PATCH','PUT','DELETE','OPTIONS'],
+    allowedHeaders: ['Content-Type','Authorization'],
+    credentials: true
+}))
+
 app.use("/airticket/api/v1",airportRoutes)
 app.use("/airticket/api/v1",authRoutes)
 
